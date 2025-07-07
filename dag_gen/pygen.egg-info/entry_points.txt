@@ -1,0 +1,2 @@
+[console_scripts]
+pygen-generator = pygen.generator:main
