@@ -1,0 +1,5 @@
+name: ExampleConfig
+version: 1.0
+settings:
+  param1: value1
+  param2: value2

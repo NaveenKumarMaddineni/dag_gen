@@ -1,0 +1,36 @@
+name: Install and Run WHL from External Repo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  install-and-run-whl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+
+      - name: Checkout external repo with WHL
+        uses: actions/checkout@v4
+        with:
+          repository: NaveenKumarMaddineni/dag_gen
+          ref: generator
+          path: external_dag_gen
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install WHL
+        run: |
+          pip install external_dag_gen/dag_gen/dist/pygen-0.1.0-py3-none-any.whl
+
+
+
+      - name: Run pygen-generator with local config
+        run: |
+          external_dag_gen/dag_gen/.venv/bin/pygen-generator my_config.yaml --output print_config1.py || pygen-generator my_config.yaml --output print_config1.py
