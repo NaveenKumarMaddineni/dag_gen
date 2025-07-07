@@ -1,7 +1,0 @@
-Metadata-Version: 2.4
-Name: pygen
-Version: 0.1.0
-Summary: A Python code generator from config files
-Author: MADD
-Dynamic: author
-Dynamic: summary
